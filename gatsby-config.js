@@ -5,6 +5,10 @@
  */
 
 module.exports = {
-  /* Your site config here */
+  siteMetadata: {
+    title: `Carrigtwohill Baptist Group`,
+    siteUrl: `https://carrigtwohillbaptist.ie/`,
+    description: ``,
+  },
   plugins: [],
 }

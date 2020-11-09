@@ -8,7 +8,10 @@ module.exports = {
   siteMetadata: {
     title: `Carrigtwohill Baptist Group`,
     siteUrl: `https://carrigtwohillbaptist.ie/`,
-    description: ``,
+    description: ``, // TODO
+    author: ``, // TODO
   },
-  plugins: [],
+  plugins: [
+      `gatsby-plugin-styled-components`
+  ],
 }

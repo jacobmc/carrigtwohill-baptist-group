@@ -12,6 +12,12 @@ module.exports = {
     author: ``, // TODO
   },
   plugins: [
-      `gatsby-plugin-styled-components`
+      `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      },
+    },
   ],
 }

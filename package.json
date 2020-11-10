@@ -17,9 +17,12 @@
     "babel-plugin-styled-components": "^1.11.1",
     "gatsby": "^2.24.67",
     "gatsby-plugin-styled-components": "^3.3.14",
+    "gatsby-plugin-typography": "^2.5.13",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "styled-components": "^5.2.1"
+    "react-typography": "^0.16.19",
+    "styled-components": "^5.2.1",
+    "typography": "^0.16.19"
   },
   "devDependencies": {
     "prettier": "2.1.2"

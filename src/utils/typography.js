@@ -15,6 +15,7 @@ const typography = new Typography({
 			name: 'Roboto',
 			styles: [
 				'500',
+				'400'
 			],
 		},
 		{

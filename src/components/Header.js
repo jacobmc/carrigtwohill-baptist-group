@@ -62,11 +62,6 @@ export default function Header() {
 			padding-top: 3px;
 			cursor: pointer;
 			border: none;
-			
-			span {
-				position: absolute;
-				left: -9999px;
-			}
 		}
 	`;
 
@@ -94,7 +89,7 @@ export default function Header() {
 					<Search>
 						<button className={"search-toggle"}>
 							<FaSearch />
-							<span>Open Search</span>
+							<span className={"sr-only"}>Open Search</span>
 						</button>
 					</Search>
 				</Nav>

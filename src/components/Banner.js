@@ -4,7 +4,6 @@ import styled from "styled-components";
 import BackgroundImage from "gatsby-background-image";
 
 export default function Banner() {
-
 	const data = useStaticQuery(graphql`
 		query {
             file(relativePath: { eq: "carrigtwohill-street.jpg" }) {
@@ -17,20 +16,39 @@ export default function Banner() {
 		 }
 	`)
 
-	const Banner = styled.div`
-		
+	const Background = styled(BackgroundImage)`
+		background: linear-gradient(93.88deg, #000000 0%, rgba(42, 42, 42, 0.834768) 48.27%, rgba(67, 67, 67, 0.736985) 66.49%, rgba(126, 126, 126, 0.506307) 86.4%, rgba(255, 255, 255, 0) 100%) center center;
+		background-size: cover;
+		opacity: 1 !important;
 	`;
 
-	const BannerImage = styled.figure``;
+	const Content = styled.div`
+		max-width: 922px;
+		margin: 0 auto;
+		padding: 72px 0;
+		color: rgba(252, 252, 252, 0.8);
+	`;
 
-	const Content = styled.div``;
+	const Heading = styled.div`
+		margin-bottom: 15px;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: 400;
+		font-size: 36px;
+		line-height: 42px;
+		letter-spacing: 1px;
+	`;
 
-	const Heading = styled.div``;
-
-	const Copy = styled.div``;
+	const Copy = styled.div`
+		max-width: 480px;
+		font-size: 22px;
+		font-weight: 300;
+		letter-spacing: 1px;
+		line-height: 25px;
+	`;
 
 	return (
-		<BackgroundImage
+		<Background
 			tag={"section"}
 			fluid={data.file.childImageSharp.fluid}
 		>
@@ -44,8 +62,6 @@ export default function Banner() {
 					- 1 John 3:16
 				</Copy>
 			</Content>
-		</BackgroundImage>
-
+		</Background>
 	)
-
 }

@@ -21,6 +21,7 @@ const typography = new Typography({
 		{
 			name: 'Rokkitt',
 			styles: [
+				'300',
 				'400',
 				'400i',
 				'500',

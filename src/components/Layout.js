@@ -6,6 +6,8 @@ import Footer from "./Footer";
 export default function Layout({ children }) {
 
 	const Layout = styled.div`
+		background: #fafafa;
+		
 		.sr-only {
 			border: 0 !important;
 			clip: rect(1px, 1px, 1px, 1px) !important;

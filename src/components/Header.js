@@ -28,7 +28,7 @@ export default function Header() {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		max-width: 762px;
+		max-width: 954px;
 		margin: 0 auto;
 	`;
 

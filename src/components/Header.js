@@ -10,8 +10,8 @@ export default function Header() {
 		query {
             file(relativePath: { eq: "carrigtwohill-baptist-group-logo.png" }) {
                 childImageSharp {
-                    fixed(width: 89, height: 75) {
-                        ...GatsbyImageSharpFixed
+                    fluid(quality:100, maxWidth: 300) {
+                        ...GatsbyImageSharpFluid
                     }
                 }
             }
@@ -21,7 +21,7 @@ export default function Header() {
 	const Header = styled.header`
 		width: 100%;
 		padding: 10px 0;
-		border-top: 4px solid #AB2346;
+		border-top: 5px solid #AB2346;
 	`;
 
 	const Container = styled.div`
@@ -31,6 +31,16 @@ export default function Header() {
 		max-width: 762px;
 		margin: 0 auto;
 	`;
+
+	const Logo = styled(Img)`
+		min-width: 112px;
+		min-height: 84px;
+		
+		img {
+			width: 100%;
+			height: 100%;
+		}
+	`
 
 	const Nav = styled.nav`
 		display: flex;
@@ -43,13 +53,15 @@ export default function Header() {
 		
 		li {
 			margin-left: 20px;
+			margin-bottom: 0;
 			
 			a {
 				text-decoration: none;
 				color: #000;
 				font-family: "Roboto", sans-serif;
 				font-weight: 500;
-				font-size: 14px;
+				font-size: 18px;
+				letter-spacing: 0.5px;
 			}
 		}
 	`;
@@ -71,8 +83,8 @@ export default function Header() {
 			<Container>
 				<div className={"logo"}>
 					<Link to={"/"}>
-						<Img
-							fixed={data.file.childImageSharp.fixed}
+						<Logo
+							fluid={data.file.childImageSharp.fluid}
 							title={"Carrigtwohill Baptist Group"}
 							alt={"Carrigtwohill Baptist Group Logo"}
 						/>

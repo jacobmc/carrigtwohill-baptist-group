@@ -10,7 +10,7 @@ export default function Footer() {
         query {
             file(relativePath: { eq: "carrigtwohill-baptist-group-logo-black.png" }) {
                 childImageSharp {
-                    fixed(width: 129, height: 97) {
+                    fixed(width: 162, height: 122) {
                         ...GatsbyImageSharpFixed
                     }
                 }
@@ -26,15 +26,15 @@ export default function Footer() {
 		display: flex;
 		justify-content: space-between;
 		margin: 0 auto;
-		padding: 18px 0 36px 0;
-		max-width: 595px;
+		padding: 23px 0 36px 0;
+		max-width: 744px;
 	`;
 
 	const Nav = styled.nav`
 		display: flex;
 		
 		ul {
-			max-width: 100px;
+			max-width: 150px;
 			margin: 0;
 			list-style: none;
 			
@@ -44,23 +44,25 @@ export default function Footer() {
 				a {
 					color: #000;
 					font-family: "Roboto", sans-serif;
-					font-size: 14px;
+					font-size: 22px;
 					font-weight: 500;
+					letter-spacing: 0.5px;
 					text-decoration: none;
 				}
 			}	
 			
 			ul {
+				margin-top: 10px;
+				
 				li {
 					display: flex;
-					height: 24px;
+					margin-bottom: 15px;
 					line-height: 1.25;
-					margin-bottom: -5px;
 					
 					
 					a {
-						font-size: 10px;
-						font-weight: 400;
+						font-size: 14px;
+						font-weight: 300;
 					}
 				}
 			}
@@ -77,7 +79,7 @@ export default function Footer() {
 			
 			li {
 				margin-left: 17px;
-				font-size: 24px;
+				font-size: 30px;
 				
 				a { color: #000; }
 			}
@@ -90,7 +92,7 @@ export default function Footer() {
 		color: #fff;
 		text-align: center;
 		font-family: "Roboto", sans-serif;
-		font-size: 10px;
+		font-size: 14px;
 		
 		p {
 			margin: 0;

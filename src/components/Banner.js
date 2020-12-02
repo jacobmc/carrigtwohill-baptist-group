@@ -21,7 +21,7 @@ export default function Banner() {
 	`;
 
 	const Content = styled.div`
-		max-width: 922px;
+		max-width: 1152px;
 		margin: 0 auto;
 		padding: 72px 0;
 		color: rgba(252, 252, 252, 0.8);

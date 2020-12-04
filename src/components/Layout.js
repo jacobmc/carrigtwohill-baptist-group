@@ -21,6 +21,11 @@ export default function Layout({ children }) {
 			width: 1px !important;
 			white-space: nowrap !important;
 		}
+		
+		a {
+			color: #2E5CB2;
+			text-decoration-line: underline;
+		}
 	`;
 
 	return (

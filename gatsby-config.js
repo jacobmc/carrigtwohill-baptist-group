@@ -3,6 +3,9 @@
  *
  * See: https://www.gatsbyjs.com/docs/gatsby-config/
  */
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 
 module.exports = {
   siteMetadata: {
@@ -12,14 +15,21 @@ module.exports = {
     author: ``, // TODO
   },
   plugins: [
-      `gatsby-plugin-styled-components`,
-      `gatsby-transformer-sharp`,
-      `gatsby-plugin-sharp`,
+    `gatsby-plugin-styled-components`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-source-sanity`,
+      options: {
+        projectId: process.env.SANITY_PROJECT_ID,
+        dataset: process.env.SANITY_DATASET,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `./src/assets/images`
-      }
+        path: `./src/assets/images`,
+      },
     },
     {
       resolve: `gatsby-plugin-typography`,

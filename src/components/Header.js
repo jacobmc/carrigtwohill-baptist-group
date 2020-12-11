@@ -14,10 +14,57 @@ export default function Header() {
           }
         }
       }
+      allSanityMenu(filter: {sanityId: {eq: "main"}}) {
+        edges {
+          node {
+            id
+            title
+            sanityId
+            menuItems {
+              text
+              menuItemUrl {
+                externalContent
+                linkUrl
+              }
+              submenuItems {
+                text
+                menuItemUrl {
+                  externalContent
+                  linkUrl
+                }
+              }
+            }
+          }
+        }
+      }
     }
   `)
 
-  const Header = styled.header`
+  const currentPage = window.location.pathname.replace(/\//g, '')
+
+  // Renders link using anchor tag if menu item goes to external source
+  const renderLink = menuItem => {
+    if(menuItem.menuItemUrl.externalContent) {
+      return <a href={"/" + menuItem.menuItemUrl.linkUrl}>{menuItem.text}</a>
+    }
+
+    return <Link to={"/" + menuItem.menuItemUrl.linkUrl}>{menuItem.text}</Link>
+  }
+
+  // Renders the submenu if it exists for menu item
+  const renderSubmenu = menuItem => {
+    if(menuItem.submenuItems.length) {
+      return (
+          <ul>
+            {menuItem.submenuItems.map((submenuItem, index) => {
+              return <li key={index} className={(currentPage === submenuItem.menuItemUrl.linkUrl) ? 'active' : ''}>{renderLink(submenuItem)}</li>
+            })}
+          </ul>
+      )
+    }
+  }
+
+  const Header = styled.header` 
     width: 100%;
     padding: 10px 0;
     border-top: 5px solid #ab2346;
@@ -51,6 +98,7 @@ export default function Header() {
     list-style: none;
 
     li {
+      position: relative;
       margin-left: 20px;
       margin-bottom: 0;
 
@@ -61,6 +109,44 @@ export default function Header() {
         font-weight: 500;
         font-size: 18px;
         letter-spacing: 0.5px;
+      }
+      
+      ul {
+        position: absolute;
+        display: none;
+        width: 200px;
+        margin: 0;
+        padding: 5px 10px;
+        list-style: none;
+        border: 1px solid #ccc;
+        
+        li {
+          margin: 0;
+          
+          a {
+            font-size: 16px;
+          }
+          
+          &.active {
+            a {
+              border-bottom: 3px solid #AB2346;
+            }
+          }
+        }
+        
+        &:hover { display: block; }
+      }
+      
+      &.active {
+        a {
+          border-bottom: 3px solid #AB2346;
+        }
+      }
+      
+      &:hover {
+        ul {
+          display: block;
+        }
       }
     }
   `
@@ -91,18 +177,14 @@ export default function Header() {
         </div>
         <Nav>
           <Menu>
-            <li>
-              <Link to={"/about/"}>About</Link>
-            </li>
-            <li>
-              <Link to={"/news/"}>News</Link>
-            </li>
-            <li>
-              <Link to={"/resources/"}>Resources</Link>
-            </li>
-            <li>
-              <Link to={"/contact/"}>Contact</Link>
-            </li>
+            {data.allSanityMenu.edges[0].node.menuItems.map( (menuItem, index) => {
+              return (
+                  <li key={index} className={(currentPage === menuItem.menuItemUrl.linkUrl) ? 'active' : ''}>
+                    {renderLink(menuItem)}
+                    {renderSubmenu(menuItem)}
+                  </li>
+              )
+            })}
           </Menu>
 
           <Search>

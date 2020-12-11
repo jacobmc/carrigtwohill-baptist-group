@@ -2,6 +2,7 @@ import React from "react"
 import Layout from "../components/Layout"
 import { graphql } from "gatsby"
 import BlockContent from "@sanity/block-content-to-react"
+import styled from "styled-components";
 
 export default function PageTemplate({
   data: {
@@ -13,8 +14,6 @@ export default function PageTemplate({
   },
   pageContext,
 }) {
-  console.log(page, pageContext)
-
   const serializers = {
     types: {
       code: props => (
@@ -25,10 +24,21 @@ export default function PageTemplate({
     }
   }
 
+  const Container = styled.article`
+    max-width: 954px;
+    margin: 0 auto;
+  `
+
   return (
     <Layout>
-      <h1>{page.title}</h1>
-      <BlockContent blocks={page._rawBody} serializers={serializers} />
+      <Container>
+        <header>
+          <h1>{page.title}</h1>
+        </header>
+        <section>
+          <BlockContent blocks={page._rawBody} serializers={serializers} />
+        </section>
+      </Container>
     </Layout>
   )
 }

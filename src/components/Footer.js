@@ -44,8 +44,6 @@ export default function Footer() {
     }
   `)
 
-  console.log( data )
-
   const Footer = styled.footer`
     background: #cad8de;
   `

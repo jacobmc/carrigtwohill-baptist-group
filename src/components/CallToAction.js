@@ -6,10 +6,10 @@ import Img from "gatsby-image"
 export default function CallToAction() {
   const data = useStaticQuery(graphql`
     query {
-      file(relativePath: { eq: "group-pic.png" }) {
+      file(relativePath: { eq: "group-photo.jpg" }) {
         childImageSharp {
-          fixed(width: 664, height: 430) {
-            ...GatsbyImageSharpFixed
+          fluid(quality: 90, maxWidth: 664) {
+            ...GatsbyImageSharpFluid
           }
         }
       }
@@ -24,6 +24,7 @@ export default function CallToAction() {
   const Image = styled(Img)`
     position: relative;
     margin: 0;
+    max-width: 664px;
 
     img {
       margin: 0;
@@ -86,7 +87,7 @@ export default function CallToAction() {
   return (
     <CTA>
       <Image
-        fixed={data.file.childImageSharp.fixed}
+        fluid={data.file.childImageSharp.fluid}
         title={"Bible Study Group Photo"}
         alt={"Photo of the bible study group at a member's home"}
       />

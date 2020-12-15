@@ -7,7 +7,7 @@ import ContactForm from "../components/ContactForm";
 
 /**
  * Template component for rendering pages
- * 
+ *
  * @param page
  * @param pageContext
  * @returns {JSX.Element}

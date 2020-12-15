@@ -3,6 +3,7 @@ import { graphql, useStaticQuery, Link } from "gatsby"
 import { FaFacebookSquare, FaInstagram, FaYoutubeSquare } from "react-icons/fa"
 import styled from "styled-components"
 import Img from "gatsby-image"
+import Navigation from "./Navigation";
 
 export default function Footer() {
   const data = useStaticQuery(graphql`
@@ -14,8 +15,36 @@ export default function Footer() {
           }
         }
       }
+      allSanityMenu(
+        filter: {sanityId: {in: ["footer-left", "footer-right"]}}
+        sort: {fields: [sanityId], order:ASC}
+      ) {
+        edges {
+          node {
+            id
+            title
+            sanityId
+            menuItems {
+              text
+              menuItemUrl {
+                externalContent
+                linkUrl
+              }
+              submenuItems {
+                text
+                menuItemUrl {
+                  externalContent
+                  linkUrl
+                }
+              }
+            }
+          }
+        }
+      }
     }
   `)
+
+  console.log( data )
 
   const Footer = styled.footer`
     background: #cad8de;
@@ -120,37 +149,9 @@ export default function Footer() {
         </div>
 
         <Nav>
-          <ul>
-            <li>
-              <Link to={"/about/"}>About</Link>
-              <ul>
-                <li>
-                  <a href={"#"}>Who We Are</a>
-                </li>
-                <li>
-                  <a href={"#"}>What We Believe</a>
-                </li>
-                <li>
-                  <a href={"#"}>Bible Study</a>
-                </li>
-                <li>
-                  <a href={"#"}>Events & Community Involvement</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-
-          <ul>
-            <li>
-              <Link to={"/news/"}>News</Link>
-            </li>
-            <li>
-              <Link to={"/resources/"}>Resources</Link>
-            </li>
-            <li>
-              <Link to={"/contact/"}>Contact</Link>
-            </li>
-          </ul>
+          {data.allSanityMenu.edges.map(menu => {
+            return <Navigation menu={menu.node} currentPage={''} />
+          })}
         </Nav>
 
         <Social>

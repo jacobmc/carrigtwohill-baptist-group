@@ -180,19 +180,7 @@ export default function Header() {
           </Link>
         </div>
         <Nav>
-          {/*<Menu>*/}
-          {/*  {data.allSanityMenu.edges[0].node.menuItems.map( (menuItem, index) => {*/}
-          {/*    return (*/}
-          {/*        <li key={index} className={(currentPage === menuItem.menuItemUrl.linkUrl) ? 'active' : ''}>*/}
-          {/*          {renderLink(menuItem)}*/}
-          {/*          {renderSubmenu(menuItem)}*/}
-          {/*        </li>*/}
-          {/*    )*/}
-          {/*  })}*/}
-          {/*</Menu>*/}
-
           <Menu menu={data.allSanityMenu.edges[0].node} currentPage={currentPage} />
-
           <Search>
             <button className={"search-toggle"}>
               <FaSearch />

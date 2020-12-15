@@ -3,6 +3,7 @@ import { graphql, useStaticQuery, Link } from "gatsby"
 import { FaSearch } from "react-icons/fa"
 import styled from "styled-components"
 import Img from "gatsby-image"
+import Navigation from "./Navigation";
 
 export default function Header() {
   const data = useStaticQuery(graphql`
@@ -92,7 +93,7 @@ export default function Header() {
     display: flex;
   `
 
-  const Menu = styled.ul`
+  const Menu = styled(Navigation)`
     display: flex;
     margin: 0;
     list-style: none;
@@ -110,39 +111,42 @@ export default function Header() {
         font-size: 18px;
         letter-spacing: 0.5px;
       }
-      
+
       ul {
         position: absolute;
         display: none;
         width: 200px;
         margin: 0;
         padding: 5px 10px;
+        background: #fafafa;
         list-style: none;
         border: 1px solid #ccc;
-        
+        box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.15);
+        z-index: 1000;
+
         li {
           margin: 0;
-          
+
           a {
             font-size: 16px;
           }
-          
+
           &.active {
             a {
               border-bottom: 3px solid #AB2346;
             }
           }
         }
-        
+
         &:hover { display: block; }
       }
-      
+
       &.active {
-        a {
+        > a {
           border-bottom: 3px solid #AB2346;
         }
       }
-      
+
       &:hover {
         ul {
           display: block;
@@ -176,16 +180,18 @@ export default function Header() {
           </Link>
         </div>
         <Nav>
-          <Menu>
-            {data.allSanityMenu.edges[0].node.menuItems.map( (menuItem, index) => {
-              return (
-                  <li key={index} className={(currentPage === menuItem.menuItemUrl.linkUrl) ? 'active' : ''}>
-                    {renderLink(menuItem)}
-                    {renderSubmenu(menuItem)}
-                  </li>
-              )
-            })}
-          </Menu>
+          {/*<Menu>*/}
+          {/*  {data.allSanityMenu.edges[0].node.menuItems.map( (menuItem, index) => {*/}
+          {/*    return (*/}
+          {/*        <li key={index} className={(currentPage === menuItem.menuItemUrl.linkUrl) ? 'active' : ''}>*/}
+          {/*          {renderLink(menuItem)}*/}
+          {/*          {renderSubmenu(menuItem)}*/}
+          {/*        </li>*/}
+          {/*    )*/}
+          {/*  })}*/}
+          {/*</Menu>*/}
+
+          <Menu menu={data.allSanityMenu.edges[0].node} currentPage={currentPage} />
 
           <Search>
             <button className={"search-toggle"}>

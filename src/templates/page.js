@@ -43,14 +43,41 @@ export default function PageTemplate({
   const Container = styled.article`
     max-width: 954px;
     margin: 0 auto;
+    padding: 100px 0;
+  `
+
+  const Header = styled.header`
+    h1 {
+      position: relative;
+      display: inline-block;
+      max-width: 60%;
+      
+      span {
+        position: relative;
+        display: block;
+        z-index: 100;
+      }
+      
+      &::after {
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        content: '';
+        max-width: 550px;
+        width: 110%;
+        height: 10px;
+        background: #AB2346; //#037971; 
+        z-index: 1;
+      }
+    }
   `
 
   return (
     <Layout>
       <Container>
-        <header>
-          <h1>{page.title}</h1>
-        </header>
+        <Header>
+          <h1><span>{page.title}</span></h1>
+        </Header>
         <section>
           <BlockContent blocks={page._rawBody} serializers={serializers} />
 

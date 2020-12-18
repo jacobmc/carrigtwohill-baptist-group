@@ -9,8 +9,7 @@ import blockContent from './objects/blockContent'
 import menuItem from "./objects/menuItem";
 import link from "./objects/link";
 import featuredImage from "./objects/featuredImage";
-import category from './documents/category'
-import post from './documents/post'
+import article from "./documents/article";
 import author from './documents/author'
 import video from './documents/video'
 import event from './documents/event'
@@ -28,8 +27,7 @@ export default createSchema({
     // The following are document types which will appear
     // in the studio.
     page,
-    post,
-    category,
+    article,
     author,
     video,
     event,

@@ -10,6 +10,7 @@ import menuItem from "./objects/menuItem";
 import link from "./objects/link";
 import featuredImage from "./objects/featuredImage";
 import article from "./documents/article";
+import news from "./documents/news";
 import author from './documents/author'
 import video from './documents/video'
 import event from './documents/event'
@@ -28,6 +29,7 @@ export default createSchema({
     // in the studio.
     page,
     article,
+    news,
     author,
     video,
     event,

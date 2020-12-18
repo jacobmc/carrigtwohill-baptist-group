@@ -18,6 +18,12 @@ export default {
       },
     },
     {
+      name: 'canonicalUrl',
+      title: 'Canonical URL',
+      type: 'url',
+      description: 'The URL of the original article'
+    },
+    {
       name: 'author',
       title: 'Author',
       type: 'reference',

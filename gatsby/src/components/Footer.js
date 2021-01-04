@@ -158,6 +158,7 @@ export default function Footer() {
               <a
                 href={"https://www.facebook.com/carrigtwohillbaptist/"}
                 target={"_blank"}
+                rel={"noreferrer"}
               >
                 <FaFacebookSquare /> <span className={"sr-only"}>Facebook</span>
               </a>
@@ -168,6 +169,7 @@ export default function Footer() {
                   "https://www.instagram.com/carrigtwohill_baptist_group/?hl=en"
                 }
                 target={"_blank"}
+                rel={"noreferrer"}
               >
                 <FaInstagram /> <span className={"sr-only"}>Instagram</span>
               </a>
@@ -178,6 +180,7 @@ export default function Footer() {
                   "https://www.youtube.com/channel/UC2ZLp-psGQzrUDdwgvCLqVw/"
                 }
                 target={"_blank"}
+                rel={"noreferrer"}
               >
                 <FaYoutubeSquare /> <span className={"sr-only"}>YouTube</span>
               </a>
@@ -189,8 +192,8 @@ export default function Footer() {
       <Copy>
         <p>
           &copy; 2020 Carrigtwohill Baptist Group •{" "}
-          <a href={"#"}>Privacy Policy</a> • <a href={"#"}>Sitemap</a> •{" "}
-          <a href={"#"}>Website Design</a>
+          <Link to={"/privacy-policy"}>Privacy Policy</Link> • <Link to={"/sitemap"}>Sitemap</Link> •{" "}
+          <a href={"https://jacobmckinney.com/"} target={"_blank"} rel={"noreferrer"}>Website Design</a>
         </p>
       </Copy>
     </Footer>

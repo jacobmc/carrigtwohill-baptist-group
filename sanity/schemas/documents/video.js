@@ -18,6 +18,11 @@ export default {
 			},
 		},
 		{
+			name: 'publishedAt',
+			title: 'Published at',
+			type: 'datetime',
+		},
+		{
 			name: 'url',
 			title: 'YouTube URL',
 			type: 'url',

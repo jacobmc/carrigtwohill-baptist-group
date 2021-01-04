@@ -148,7 +148,7 @@ export default function Footer() {
 
         <Nav>
           {data.allSanityMenu.edges.map(menu => {
-            return <Navigation menu={menu.node} currentPage={''} />
+            return <Navigation key={menu.node.id} menu={menu.node} currentPage={''} />
           })}
         </Nav>
 

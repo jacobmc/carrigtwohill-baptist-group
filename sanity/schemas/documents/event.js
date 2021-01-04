@@ -37,6 +37,11 @@ export default {
 			to: {type: 'venue'}
 		},
 		{
+			name: 'featuredImage',
+			title: 'Featured Image',
+			type: 'featuredImage'
+		},
+		{
 			name: 'description',
 			title: 'Description',
 			type: 'blockContent'

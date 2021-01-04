@@ -23,6 +23,11 @@ export default {
 			type: 'url',
 		},
 		{
+			name: 'featuredImage',
+			title: 'Featured Image',
+			type: 'featuredImage'
+		},
+		{
 			name: 'description',
 			title: 'Description',
 			type: 'blockContent'

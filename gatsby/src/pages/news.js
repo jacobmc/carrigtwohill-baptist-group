@@ -100,6 +100,11 @@ export default function News() {
         }
       `
 
+    const List = styled.ul`
+      margin: 0;
+      list-style: none;
+    `
+
     return (
         <Layout>
             <Container>
@@ -107,15 +112,15 @@ export default function News() {
                     <h1><span>News</span></h1>
                 </Header>
 
-                <ul>
-                    {listItems.map(item => {
+                <List>
+                    {listItems.map((item, index) => {
                         return (
-                            <li>
+                            <li key={index}>
                                 <ListedContent content={item} />
                             </li>
                         )
                     })}
-                </ul>
+                </List>
             </Container>
         </Layout>
     )

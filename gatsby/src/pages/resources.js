@@ -100,6 +100,11 @@ export default function Resources() {
         }
       `
 
+    const List = styled.ul`
+      margin: 0;
+      list-style: none;
+    `
+
     return (
         <Layout>
             <Container>
@@ -107,15 +112,15 @@ export default function Resources() {
                     <h1><span>Resources</span></h1>
                 </Header>
 
-                <ul>
-                    {listItems.map(item => {
+                <List>
+                    {listItems.map((item, index) => {
                         return (
-                            <li>
-                                <ListedContent content={item} />
-                            </li>
-                        )
+                         <li key={index}>
+                             <ListedContent content={item} />
+                         </li>
+                         )
                     })}
-                </ul>
+                </List>
             </Container>
         </Layout>
     )

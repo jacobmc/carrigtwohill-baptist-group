@@ -26,18 +26,61 @@ export default function ListedContent({content}) {
 	}
 	url += content.slug.current
 
+	const Article = styled.article`
+	  display: flex;
+	  padding: 50px 0;
+	  align-items: center;
+	  
+	  figure {
+	    position: relative;
+	  	margin: 0 25px 0 0;
+	  	
+	  	
+		img {
+			display: block;
+			max-width: 300px;
+			object-fit: cover;
+		}
+	  	
+	  	&::after {
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		  display: block;
+		  content: "";
+		  height: 100%;
+		  width: 100%;
+		  box-shadow: inset 0px 0px 10px #eaeaea;
+		}
+	  }
+	  
+	  section {
+	  	h2 {
+	  		a {
+	  			text-decoration: none;
+	  			color: #262322;
+	  		}
+	  	}
+	  }
+	`
 	return (
-		<article>
-			<figure>
-				<a href={url}>
-					<img />
-				</a>
-			</figure>
+		<Article>
+			{content.featuredImage !== null &&
+			<Link to={url}>
+				<figure>
+					<img
+						src={content.featuredImage.asset.url}
+						alt={content.featuredImage.alt}
+						title={content.featuredImage.title}
+					/>
+				</figure>
+			</Link>
+			}
 			<section>
-				<h2>{content.title}</h2>
+				<h2><Link to={url}>{content.title}</Link></h2>
 				<p>Description</p>
-				<a href={url}>{buttonText}</a>
+				<Link to={url}>{buttonText}</Link>
 			</section>
-		</article>
+		</Article>
 	)
 }

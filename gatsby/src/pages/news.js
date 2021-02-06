@@ -103,6 +103,11 @@ export default function News() {
     const List = styled.ul`
       margin: 0;
       list-style: none;
+      
+      li {
+        margin-bottom: 0;
+        border-bottom: 1px solid #ccc;
+      }
     `
 
     return (

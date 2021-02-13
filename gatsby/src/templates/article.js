@@ -36,40 +36,66 @@ export default function PageTemplate({
   const Container = styled.article`
     max-width: 954px;
     margin: 0 auto;
-    padding: 100px 0;
+    padding: 50px 0;
   `
 
   const Header = styled.header`
     h1 {
       position: relative;
       display: inline-block;
-      max-width: 60%;
-      
-      span {
-        position: relative;
-        display: block;
-        z-index: 100;
-      }
-      
-      &::after {
-        position: absolute;
-        left: 0;
-        bottom: -5px;
-        content: '';
-        max-width: 550px;
-        width: 110%;
-        height: 10px;
-        background: #AB2346; //#037971; 
-        z-index: 1;
-      }
+      max-width: 80%;
+      margin-bottom: 0.8rem;
     }
   `
+
+  const FeaturedImage = styled.figure`
+    position: relative; 
+    
+    img {
+      display: block;
+      width: 100%;
+      margin: 0;
+    }
+    
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      content: "";
+      height: 100%;
+      width: 100%;
+      box-shadow: inset 0px 0px 10px #eaeaea;
+    }
+  `
+  const CanonicalURL = styled.p`
+    font-style: italic;
+  `
+
+  console.log(article)
 
   return (
     <Layout>
       <Container>
         <Header>
-          <h1><span>{article.title}</span></h1>
+          {article.featuredImage !== null &&
+          <FeaturedImage>
+            <img
+              src={article.featuredImage.asset.url}
+              alt={article.featuredImage.alt}
+              title={article.featuredImage.title}
+            />
+          </FeaturedImage>
+          }
+
+          <h1>{article.title}</h1>
+          <div>
+            <p>by {article.author.name} | {article._createdAt}</p>
+          </div>
+
+          {article.canonicalUrl !== null &&
+          <CanonicalURL>This article was originally posted <a href={article.canonicalUrl} target={"_blank"}>here</a>.</CanonicalURL>
+          }
         </Header>
         <section>
           <BlockContent blocks={article._rawBody} serializers={serializers} />
@@ -84,7 +110,19 @@ export const pageQuery = graphql`
     allSanityArticle(filter: { slug: { current: { eq: $slug } } }) {
       edges {
         node {
+          _createdAt(formatString: "DD MMMM YYYY")
           title
+          author {
+            name
+          }
+          canonicalUrl
+          featuredImage {
+            asset {
+              url
+            }
+            alt
+            title
+          }
           _rawBody
         }
       }

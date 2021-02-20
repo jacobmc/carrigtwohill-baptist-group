@@ -51,13 +51,11 @@ export default function PageTemplate({
     font-style: italic;
   `
 
-  console.log(article)
-
   return (
     <Layout>
       <Container>
         <Header>
-          {article.featuredImage !== null &&
+          {article.featuredImage !== null && article.featuredImage !== undefined &&
           <figure>
             <img
               src={article.featuredImage.asset.url}

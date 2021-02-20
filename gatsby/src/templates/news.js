@@ -36,32 +36,15 @@ export default function PageTemplate({
   const Container = styled.article`
     max-width: 954px;
     margin: 0 auto;
-    padding: 100px 0;
+    padding: 50px 0;
   `
 
   const Header = styled.header`
-    h1 {
+     h1 {
       position: relative;
       display: inline-block;
-      max-width: 60%;
-      
-      span {
-        position: relative;
-        display: block;
-        z-index: 100;
-      }
-      
-      &::after {
-        position: absolute;
-        left: 0;
-        bottom: -5px;
-        content: '';
-        max-width: 550px;
-        width: 110%;
-        height: 10px;
-        background: #AB2346; //#037971; 
-        z-index: 1;
-      }
+      max-width: 80%;
+      margin-bottom: 0.8rem;
     }
   `
 
@@ -69,7 +52,17 @@ export default function PageTemplate({
     <Layout>
       <Container>
         <Header>
-          <h1><span>{news.title}</span></h1>
+          {news.featuredImage !== null && news.featuredImage !== undefined &&
+          <figure>
+            <img
+                src={news.featuredImage.asset.url}
+                alt={news.featuredImage.alt}
+                title={news.featuredImage.title}
+            />
+          </figure>
+          }
+
+          <h1>{news.title}</h1>
         </Header>
         <section>
           <BlockContent blocks={news._rawBody} serializers={serializers} />

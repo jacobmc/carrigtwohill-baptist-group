@@ -36,42 +36,38 @@ export default function PageTemplate({
   const Container = styled.article`
     max-width: 954px;
     margin: 0 auto;
-    padding: 100px 0;
+    padding: 50px 0;
   `
 
   const Header = styled.header`
     h1 {
       position: relative;
       display: inline-block;
-      max-width: 60%;
-      
-      span {
-        position: relative;
-        display: block;
-        z-index: 100;
-      }
-      
-      &::after {
-        position: absolute;
-        left: 0;
-        bottom: -5px;
-        content: '';
-        max-width: 550px;
-        width: 110%;
-        height: 10px;
-        background: #AB2346; //#037971; 
-        z-index: 1;
-      }
+      max-width: 80%;
+      margin-bottom: 50px;
     }
   `
+
+  const videoID = video.url.replace(/^.*v=(.*)(&|$)/, '$1').replace(/&.*/, '')
 
   return (
     <Layout>
       <Container>
         <Header>
-          <h1><span>{video.title}</span></h1>
+          <h1>{video.title}</h1>
         </Header>
         <section>
+          {video.url !== null && video.url !== undefined &&
+            <iframe
+				id={'ytplayer'}
+                type={'text/html'}
+                width={'954'}
+                height={'539'}
+                src={'https://youtube.com/embed/' + videoID}
+                frameBorder={'0'}
+            />
+          }
+
           <BlockContent blocks={video._rawDescription} serializers={serializers} />
         </section>
       </Container>
@@ -86,6 +82,7 @@ export const pageQuery = graphql`
         node {
           title
           _rawDescription
+          url
         }
       }
     }

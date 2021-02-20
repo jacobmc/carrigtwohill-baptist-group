@@ -47,6 +47,7 @@ export default function PageTemplate({
       margin-bottom: 0.8rem;
     }
   `
+
   const CanonicalURL = styled.p`
     font-style: italic;
   `
@@ -71,7 +72,7 @@ export default function PageTemplate({
           </div>
 
           {article.canonicalUrl !== null &&
-          <CanonicalURL>This article was originally posted <a href={article.canonicalUrl} target={"_blank"}>here</a>.</CanonicalURL>
+            <CanonicalURL>This article was originally posted <a href={article.canonicalUrl} target={"_blank"}>here</a>.</CanonicalURL>
           }
         </Header>
         <section>

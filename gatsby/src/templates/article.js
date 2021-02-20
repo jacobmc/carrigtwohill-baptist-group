@@ -47,27 +47,6 @@ export default function PageTemplate({
       margin-bottom: 0.8rem;
     }
   `
-
-  const FeaturedImage = styled.figure`
-    position: relative; 
-    
-    img {
-      display: block;
-      width: 100%;
-      margin: 0;
-    }
-    
-    &::after {
-      position: absolute;
-      top: 0;
-      left: 0;
-      display: block;
-      content: "";
-      height: 100%;
-      width: 100%;
-      box-shadow: inset 0px 0px 10px #eaeaea;
-    }
-  `
   const CanonicalURL = styled.p`
     font-style: italic;
   `
@@ -79,13 +58,13 @@ export default function PageTemplate({
       <Container>
         <Header>
           {article.featuredImage !== null &&
-          <FeaturedImage>
+          <figure>
             <img
               src={article.featuredImage.asset.url}
               alt={article.featuredImage.alt}
               title={article.featuredImage.title}
             />
-          </FeaturedImage>
+          </figure>
           }
 
           <h1>{article.title}</h1>

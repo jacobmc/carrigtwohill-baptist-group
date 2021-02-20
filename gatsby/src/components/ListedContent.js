@@ -32,25 +32,10 @@ export default function ListedContent({content}) {
 	  align-items: center;
 	  
 	  figure {
-	    position: relative;
 	  	margin: 0 25px 0 0;
 	  	
-	  	
 		img {
-			display: block;
 			max-width: 300px;
-			object-fit: cover;
-		}
-	  	
-	  	&::after {
-		  position: absolute;
-		  top: 0;
-		  left: 0;
-		  display: block;
-		  content: "";
-		  height: 100%;
-		  width: 100%;
-		  box-shadow: inset 0px 0px 10px #eaeaea;
 		}
 	  }
 	  

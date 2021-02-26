@@ -80,7 +80,6 @@ export default function PageTemplate({
         </Header>
         <section>
           <BlockContent blocks={page._rawBody} serializers={serializers} />
-
           {renderContactForm()}
         </section>
       </Container>

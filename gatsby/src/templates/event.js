@@ -3,10 +3,9 @@ import Layout from "../components/Layout"
 import { graphql } from "gatsby"
 import BlockContent from "@sanity/block-content-to-react"
 import styled from "styled-components";
-import ContactForm from "../components/ContactForm";
 
 /**
- * Template component for rendering pages
+ * Template component for rendering events
  *
  * @param page
  * @param pageContext

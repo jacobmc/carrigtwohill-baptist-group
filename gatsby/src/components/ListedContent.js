@@ -23,6 +23,8 @@ export default function ListedContent({content}) {
 			url = '/events/'
 			buttonText = 'Learn More'
 			break
+		default:
+			url = '/'
 	}
 	url += content.slug.current
 

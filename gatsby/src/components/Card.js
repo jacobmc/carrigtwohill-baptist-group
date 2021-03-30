@@ -30,22 +30,24 @@ export default function Card(props) {
       iconBackground = "#2E5CB2"
       headingText = "Upcoming Event"
       break
+    default:
+      iconBackground = "#FFB20F"
+      headingText = "New Resource"
+      break
   }
 
   const renderIcon = type => {
     switch (type) {
       case "news":
         return <HiOutlineSpeakerphone />
-        break
       case "article":
         return <HiOutlineBookOpen />
-        break
       case "video":
         return <HiOutlinePlay />
-        break
       case "event":
         return <HiOutlineCalendar />
-        break
+      default:
+        return <HiOutlineSpeakerphone />
     }
   }
 

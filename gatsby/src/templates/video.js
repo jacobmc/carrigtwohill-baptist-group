@@ -3,10 +3,9 @@ import Layout from "../components/Layout"
 import { graphql } from "gatsby"
 import BlockContent from "@sanity/block-content-to-react"
 import styled from "styled-components";
-import ContactForm from "../components/ContactForm";
 
 /**
- * Template component for rendering pages
+ * Template component for rendering videos
  *
  * @param page
  * @param pageContext
@@ -60,7 +59,7 @@ export default function PageTemplate({
           {video.url !== null && video.url !== undefined &&
             <iframe
 				id={'ytplayer'}
-                type={'text/html'}
+                title={video.title}
                 width={'954'}
                 height={'539'}
                 src={'https://youtube.com/embed/' + videoID}

@@ -3,10 +3,9 @@ import Layout from "../components/Layout"
 import { graphql } from "gatsby"
 import BlockContent from "@sanity/block-content-to-react"
 import styled from "styled-components";
-import ContactForm from "../components/ContactForm";
 
 /**
- * Template component for rendering pages
+ * Template component for rendering articles
  *
  * @param page
  * @param pageContext
@@ -72,7 +71,7 @@ export default function PageTemplate({
           </div>
 
           {article.canonicalUrl !== null &&
-            <CanonicalURL>This article was originally posted <a href={article.canonicalUrl} target={"_blank"}>here</a>.</CanonicalURL>
+            <CanonicalURL>This article was originally posted <a href={article.canonicalUrl} target={"_blank"} rel={"noreferrer"}>here</a>.</CanonicalURL>
           }
         </Header>
         <section>

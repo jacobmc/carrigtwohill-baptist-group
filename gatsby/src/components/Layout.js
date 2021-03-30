@@ -5,6 +5,10 @@ import Footer from "./Footer"
 
 export default function Layout({ children }) {
   const GlobalStyle = createGlobalStyle`
+    body { 
+      overflow-x: hidden; 
+    }
+
     .sr-only {
       border: 0 !important;
       clip: rect(1px, 1px, 1px, 1px) !important;

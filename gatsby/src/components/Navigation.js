@@ -6,6 +6,7 @@ import { Link } from "gatsby"
  *
  * @param menu
  * @param currentPage
+ * @param className
  * @returns {JSX.Element}
  * @constructor
  */

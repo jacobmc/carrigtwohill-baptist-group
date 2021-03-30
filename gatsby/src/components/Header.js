@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, useStaticQuery, Link } from "gatsby"
 import { FaSearch } from "react-icons/fa"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import Img from "gatsby-image"
 import Navigation from "./Navigation";
 
@@ -11,7 +11,7 @@ export default function Header() {
       file(relativePath: { eq: "carrigtwohill-baptist-group-logo.png" }) {
         childImageSharp {
           fluid(quality: 100, maxWidth: 300) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_noBase64
           }
         }
       }
@@ -43,32 +43,45 @@ export default function Header() {
 
   const currentPage = window.location.pathname.replace(/\//g, '')
 
-  // Renders link using anchor tag if menu item goes to external source
-  const renderLink = menuItem => {
-    if(menuItem.menuItemUrl.externalContent) {
-      return <a href={"/" + menuItem.menuItemUrl.linkUrl}>{menuItem.text}</a>
+  // Toggles the mobile menu
+  const toggleMobileMenu = () => {
+    const mobileMenuButton = document.getElementById('mobile-menu-button'),
+          mainNavigation = document.getElementById('main-navigation')
+
+    if ( mobileMenuButton.classList.contains('open') ) {
+      mobileMenuButton.classList.remove('open')
+    } else {
+      mobileMenuButton.classList.add('open')
     }
 
-    return <Link to={"/" + menuItem.menuItemUrl.linkUrl}>{menuItem.text}</Link>
+    if ( mainNavigation.classList.contains('open') ) {
+      mainNavigation.classList.remove('open')
+    } else {
+      mainNavigation.classList.add('open')
+    }
   }
 
-  // Renders the submenu if it exists for menu item
-  const renderSubmenu = menuItem => {
-    if(menuItem.submenuItems.length) {
-      return (
-          <ul>
-            {menuItem.submenuItems.map((submenuItem, index) => {
-              return <li key={index} className={(currentPage === submenuItem.menuItemUrl.linkUrl) ? 'active' : ''}>{renderLink(submenuItem)}</li>
-            })}
-          </ul>
-      )
+  const createDelayedAnimateCSS = () => {
+    let styles = ''
+
+    for (let i = 1; i < 20; i++) {
+      styles += `
+        &:nth-child(${i}) {
+          a {
+            transition-delay: ${(200 + (20 * i))}ms;
+          }
+        }
+      `
     }
+
+    return css`${styles}`
   }
 
   const Header = styled.header` 
     width: 100%;
     padding: 10px 0;
     border-top: 5px solid #ab2346;
+    overflow: hidden;
   `
 
   const Container = styled.div`
@@ -77,6 +90,11 @@ export default function Header() {
     align-items: center;
     max-width: 954px;
     margin: 0 auto;
+    
+    /* Medium only */
+    @media screen and (max-width: 63.9375em) {
+      padding: 0 15px;
+    }
   `
 
   const Logo = styled(Img)`
@@ -89,8 +107,111 @@ export default function Header() {
     }
   `
 
+  const MobileMenuButton = styled.button`
+    display: none;
+    position: relative;
+    right: 10px;
+    width: 32px;
+    height: 30px;
+    border: none;
+    background: none;
+    text-indent: -9999px;
+    
+    span {
+      position: absolute;
+      display: block;
+      top: 12px;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: #AB2346;
+      transition: background 0s 0.3s;
+      
+      &:before,
+      &:after {
+        position: absolute;
+        display: block;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background-color: #AB2346;
+        content: "";
+        transition-duration: 0.3s, 0.3s;
+        transition-delay: 0.3s, 0s;
+      }
+      
+      &:before {
+        top: -10px;
+        transition-property: top, transform;
+      }
+      
+      &:after {
+        bottom: -10px;
+        transition-property: bottom, transform;
+      }
+    }
+    
+    &.open {
+      span {
+        background: transparent;
+        &::before, &::after {
+          transition-delay: 0s, 0.3s;
+        }
+        &::before {
+          top: 0;
+          transform: rotate(45deg);
+        }
+        &::after {
+          bottom: 0;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+
+    /* Small only */
+    @media screen and (max-width: 39.9375em) {
+      display: block;
+    }
+  `
+
   const Nav = styled.nav`
     display: flex;
+
+    /* Small only */
+    @media screen and (max-width: 39.9375em) {
+      flex-direction: column;
+      z-index: 1000;
+      opacity: 0;
+      background: #fafafa;
+      position: fixed;
+      top: 119px;
+      right: -100%;
+      left: auto;
+      bottom: 0;
+      margin: 0;
+      width: 100%;
+      height: calc(100vh - 119px);
+      text-align: left;
+      overflow: auto;
+      align-content: flex-start;
+      transition: left 0.35s ease-out, right 0.35s ease-out, opacity 0.35s ease-out;
+      
+      &.open {
+        left: 0;
+        right: auto;
+        opacity: 1;
+        
+        ul {
+          li {
+            a{
+              left: 0;
+              opacity: 1;
+              transform: scale(1);
+            }
+          }
+        }
+      }
+    }
   `
 
   const Menu = styled(Navigation)`
@@ -153,6 +274,51 @@ export default function Header() {
         }
       }
     }
+
+    /* Small only */
+    @media screen and (max-width: 39.9375em) {
+      margin: 0;
+      padding-left: 15px;
+      flex-direction: column;
+      
+      li {
+        display: block;
+        width: 100%;
+        text-align: left;
+        margin: 0;
+        padding: 5px;
+      
+        a {
+          position: relative;
+          display: block;
+          font-size: 1.125rem;
+          transition: transform 350ms, opacity, 400ms, left 550ms;
+          transition-delay: 300ms;
+          left: 100%;
+          width: 100%;
+          opacity: 0;
+          transform: scale(1.5);
+          color: #0a0a0a;
+        }
+        
+        ul {
+            position: relative;  
+            display: block;
+            width: 100%;
+            padding: 0;
+            border: none;
+            box-shadow: none;
+      
+            li {
+              margin: 5px;
+              
+              &:last-child { margin-bottom: 0; }
+            }
+          }
+          
+        ${createDelayedAnimateCSS()}
+      }
+    }
   `
 
   const Search = styled.div`
@@ -164,6 +330,12 @@ export default function Header() {
       cursor: pointer;
       border: none;
     }
+
+    /* Small only */
+    @media screen and (max-width: 39.9375em) {
+      margin-left: 0;
+      padding-left: 15px;
+    }
   `
 
   // TODO add search form
@@ -173,13 +345,18 @@ export default function Header() {
         <div className={"logo"}>
           <Link to={"/"}>
             <Logo
+              loading={"eager"}
+              fadeIn={"false"}
               fluid={data.file.childImageSharp.fluid}
               title={"Carrigtwohill Baptist Group"}
               alt={"Carrigtwohill Baptist Group Logo"}
             />
           </Link>
         </div>
-        <Nav>
+        <MobileMenuButton id={"mobile-menu-button"} onClick={toggleMobileMenu}>
+          <span>Mobile Menu</span>
+        </MobileMenuButton>
+        <Nav id={"main-navigation"}>
           <Menu menu={data.allSanityMenu.edges[0].node} currentPage={currentPage} />
           <Search>
             <button className={"search-toggle"}>

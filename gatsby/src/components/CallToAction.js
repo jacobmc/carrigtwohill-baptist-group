@@ -20,6 +20,13 @@ export default function CallToAction() {
     position: relative;
     max-width: 954px;
     margin: 45px auto;
+    
+    /* Small only */
+    @media screen and (max-width: 39.9375em) {
+      max-width: 100%;
+      border-top: 30px solid #ab2346;
+      margin: 0;
+    }
   `
   const Image = styled(Img)`
     position: relative;
@@ -40,6 +47,13 @@ export default function CallToAction() {
       width: 100%;
       box-shadow: inset 0px 0px 10px #eaeaea;
     }
+    
+    /* Small only */
+    @media screen and (max-width: 39.9375em) {
+      &::after {
+        display: none;
+      }
+    }
   `
 
   const Card = styled.div`
@@ -52,6 +66,17 @@ export default function CallToAction() {
     box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.15);
     border-radius: 8px;
     transform: translateY(-50%);
+    
+    /* Small only */
+    @media screen and (max-width: 39.9375em) {
+      position: relative;
+      top: 0;
+      width: 100%;
+      padding: 25px 15px;
+      box-shadow: none;
+      border-radius: 0;
+      transform: none;
+    }
   `
 
   const Heading = styled.h2`
@@ -68,6 +93,11 @@ export default function CallToAction() {
     font-size: 28px;
     letter-spacing: 1px;
     line-height: 32px;
+    
+    /* Small only */
+    @media screen and (max-width: 39.9375em) {
+      margin-bottom: 25px;
+    }
   `
 
   const Button = styled(Link)`
@@ -82,6 +112,11 @@ export default function CallToAction() {
     font-family: "Roboto", sans-serif;
     font-size: 22px;
     border-radius: 8px;
+    
+    /* Small only */
+    @media screen and (max-width: 39.9375em) {
+      max-width: 100%;
+    }
   `
 
   return (

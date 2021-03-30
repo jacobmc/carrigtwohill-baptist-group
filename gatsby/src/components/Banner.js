@@ -32,6 +32,11 @@ export default function Banner() {
     margin: 0 auto;
     padding: 72px 0;
     color: rgba(252, 252, 252, 0.8);
+    
+    /* Small only */
+    @media screen and (max-width: 39.9375em) {
+      padding: 50px 15px;
+    }
   `
 
   const Heading = styled.h2`
@@ -40,6 +45,11 @@ export default function Banner() {
     font-size: 45px;
     line-height: 42px;
     letter-spacing: 1px;
+    
+    /* Small only */
+    @media screen and (max-width: 39.9375em) {
+      font-size: 36px
+    }
   `
 
   const Copy = styled.div`
@@ -48,6 +58,12 @@ export default function Banner() {
     font-weight: 300;
     letter-spacing: 1.5px;
     line-height: 34px;
+    
+    /* Small only */
+    @media screen and (max-width: 39.9375em) {
+      font-size: 22px;
+      line-height: 28px;
+    }
   `
 
   return (

@@ -36,6 +36,11 @@ export default function PageTemplate({
     max-width: 954px;
     margin: 0 auto;
     padding: 50px 0;
+    
+    /* Small only */
+    @media screen and (max-width: 39.9375em) {
+	  padding: 25px 15px;  
+    }
   `
 
   const Header = styled.header`
@@ -44,6 +49,13 @@ export default function PageTemplate({
       display: inline-block;
       max-width: 80%;
       margin-bottom: 0.8rem;
+    }
+    
+    /* Small only */
+    @media screen and (max-width: 39.9375em) {
+      h1 {
+        font-size: 2rem;
+      }
     }
   `
 

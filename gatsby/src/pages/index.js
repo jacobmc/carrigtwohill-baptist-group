@@ -16,6 +16,20 @@ export default function Home() {
     > *:first-child {
       margin-right: 65px;
     }
+    
+    /* Small only */
+    @media screen and (max-width: 39.9375em) {
+      flex-direction: column;
+      
+      > * {
+        margin: 0 10px;
+        
+        &:first-child {
+          margin-right: 10px;
+          margin-bottom: 35px;
+        }
+      }
+    }
   `
 
   return (

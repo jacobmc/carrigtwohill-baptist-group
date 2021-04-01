@@ -79,7 +79,7 @@ export default function PageTemplate({
     /* Small only */
     @media screen and (max-width: 39.9375em) {
       h1 {
-        font-size: 2rem;
+        font-size: 2.25rem;
       }
     }
   `

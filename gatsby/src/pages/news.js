@@ -73,7 +73,7 @@ export default function News() {
         margin: 0 auto;
         padding: 100px 0;
         
-         /* Small only */
+        /* Small only */
         @media screen and (max-width: 39.9375em) {
           padding: 25px 15px;
         }
@@ -107,7 +107,7 @@ export default function News() {
         /* Small only */
         @media screen and (max-width: 39.9375em) {
           h1 {
-            font-size: 2rem;
+            font-size: 2.25rem;
           }
         }
       `

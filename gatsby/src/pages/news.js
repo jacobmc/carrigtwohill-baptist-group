@@ -24,6 +24,11 @@ export default function News() {
                             alt
                         }
                         publishedAt
+                        body {
+                            children {
+                                text
+                            }
+                        }
                     }
                 }
             }
@@ -42,6 +47,11 @@ export default function News() {
                             alt
                         }
                         publishedAt
+                        description {
+                            children {
+                                text
+                            }
+                        }
                     }
                 }
             }

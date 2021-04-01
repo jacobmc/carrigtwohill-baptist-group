@@ -24,6 +24,11 @@ export default function Resources() {
                             alt
                         }
                         publishedAt
+                        body {
+                            children {
+                                text
+                            }
+                        }
                     }
                 }
             }
@@ -42,6 +47,11 @@ export default function Resources() {
                             alt
                         }
                         publishedAt
+                        description {
+                            children {
+                                text
+                            }
+                        }
                     }
                 }
             }

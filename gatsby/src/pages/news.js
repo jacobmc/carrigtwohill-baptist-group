@@ -72,6 +72,11 @@ export default function News() {
         max-width: 954px;
         margin: 0 auto;
         padding: 100px 0;
+        
+         /* Small only */
+        @media screen and (max-width: 39.9375em) {
+          padding: 25px 15px;
+        }
     `
 
     const Header = styled.header`
@@ -96,6 +101,13 @@ export default function News() {
             height: 10px;
             background: #AB2346; //#037971; 
             z-index: 1;
+          }
+        }
+        
+        /* Small only */
+        @media screen and (max-width: 39.9375em) {
+          h1 {
+            font-size: 2rem;
           }
         }
       `

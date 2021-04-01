@@ -54,6 +54,17 @@ export default function Footer() {
     margin: 0 auto;
     padding: 23px 0 36px 0;
     max-width: 744px;
+    
+    /* Small only */
+    @media screen and (max-width: 39.9375em) {
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+      
+      .logo {
+        order: 2;
+      }
+    }
   `
 
   const Nav = styled.nav`
@@ -96,6 +107,12 @@ export default function Footer() {
         margin-right: 20px;
       }
     }
+    
+    /* Small only */
+    @media screen and (max-width: 39.9375em) {
+      order: 1;
+      margin-bottom: 25px;
+    }
   `
 
   const Social = styled.div`
@@ -112,6 +129,11 @@ export default function Footer() {
           color: #000;
         }
       }
+    }
+    
+    /* Small only */
+    @media screen and (max-width: 39.9375em) {
+      order: 3;
     }
   `
 

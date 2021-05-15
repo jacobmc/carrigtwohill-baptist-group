@@ -36,6 +36,11 @@ export default function PageTemplate({
     max-width: 954px;
     margin: 0 auto;
     padding: 50px 0;
+    
+    /* Small only */
+    @media screen and (max-width: 39.9375em) {
+      padding: 25px 15px;
+    }
   `
 
   const Header = styled.header`
@@ -44,6 +49,28 @@ export default function PageTemplate({
       display: inline-block;
       max-width: 80%;
       margin-bottom: 50px;
+    }
+    
+    /* Small only */
+    @media screen and (max-width: 39.9375em) {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  `
+
+  const Video = styled.div`
+    position: relative;
+    margin-bottom: 25px;
+    padding-bottom: 56.25%; // 16:9
+    height: 0;
+    
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
     }
   `
 
@@ -57,14 +84,14 @@ export default function PageTemplate({
         </Header>
         <section>
           {video.url !== null && video.url !== undefined &&
-            <iframe
-				id={'ytplayer'}
-                title={video.title}
-                width={'954'}
-                height={'539'}
-                src={'https://youtube.com/embed/' + videoID}
-                frameBorder={'0'}
-            />
+            <Video>
+              <iframe
+                  id={'ytplayer'}
+                  title={video.title}
+                  src={'https://youtube.com/embed/' + videoID}
+                  frameBorder={'0'}
+              />
+            </Video>
           }
 
           <BlockContent blocks={video._rawDescription} serializers={serializers} />

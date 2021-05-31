@@ -102,7 +102,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Create Events
   const events = result.data.allSanityEvent.edges || []
-  pages.forEach((edge, index) => {
+  events.forEach((edge, index) => {
     const path = `events/${edge.node.slug.current}`
 
     createPage({

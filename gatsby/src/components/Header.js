@@ -5,6 +5,9 @@ import Img from "gatsby-image"
 import Navigation from "./Navigation"
 import Search from "./Search"
 
+// Check if window is defined (so if in the browser or in node.js).
+const isBrowser = typeof window !== "undefined"
+
 export default function Header() {
   const data = useStaticQuery(graphql`
     query {
@@ -41,7 +44,11 @@ export default function Header() {
     }
   `)
 
-  const currentPage = window.location.pathname.replace(/\//g, '')
+  let currentPage = ''
+
+  if ( isBrowser ) {
+    currentPage = window.location.pathname.replace(/\//g, '')
+  }
 
   // Toggles the mobile menu
   const toggleMobileMenu = () => {

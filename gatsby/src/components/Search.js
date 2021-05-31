@@ -4,9 +4,17 @@ import { InstantSearch, SearchBox, Hits } from "react-instantsearch-dom"
 import { FaSearch } from "react-icons/fa"
 import styled from "styled-components"
 
+// Check if window is defined (so if in the browser or in node.js).
+const isBrowser = typeof window !== "undefined"
+
 export default function Search() {
 	const searchClient = algoliasearch(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_API_KEY)
-	const searchPanel = document.getElementById("search-panel")
+
+	let searchPanel = ''
+
+	if ( isBrowser ) {
+		searchPanel = document.getElementById("search-panel")
+	}
 
 	const openSearchPanel = () => {
 		searchPanel.classList.add('open')

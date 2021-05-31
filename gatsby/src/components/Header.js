@@ -1,9 +1,9 @@
 import React from "react"
 import { graphql, useStaticQuery, Link } from "gatsby"
-import { FaSearch } from "react-icons/fa"
 import styled, { css } from "styled-components"
 import Img from "gatsby-image"
-import Navigation from "./Navigation";
+import Navigation from "./Navigation"
+import Search from "./Search"
 
 export default function Header() {
   const data = useStaticQuery(graphql`
@@ -81,7 +81,7 @@ export default function Header() {
     width: 100%;
     padding: 10px 0;
     border-top: 5px solid #ab2346;
-    overflow: hidden;
+    //overflow: hidden;
   `
 
   const Container = styled.div`
@@ -321,15 +321,8 @@ export default function Header() {
     }
   `
 
-  const Search = styled.div`
+  const HeaderSearch = styled.div`
     margin-left: 36px;
-
-    .search-toggle {
-      background: transparent;
-      padding-top: 3px;
-      cursor: pointer;
-      border: none;
-    }
 
     /* Small only */
     @media screen and (max-width: 39.9375em) {
@@ -358,12 +351,9 @@ export default function Header() {
         </MobileMenuButton>
         <Nav id={"main-navigation"}>
           <Menu menu={data.allSanityMenu.edges[0].node} currentPage={currentPage} />
-          <Search>
-            <button className={"search-toggle"}>
-              <FaSearch />
-              <span className={"sr-only"}>Open Search</span>
-            </button>
-          </Search>
+          <HeaderSearch>
+            <Search />
+          </HeaderSearch>
         </Nav>
       </Container>
     </Header>

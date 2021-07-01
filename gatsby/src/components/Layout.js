@@ -3,12 +3,11 @@ import styled, { createGlobalStyle } from "styled-components"
 import Header from "./Header"
 import Footer from "./Footer"
 
-export default function Layout({ children }) {
-  const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
     body { 
       overflow-x: hidden; 
     }
-
+    
     .sr-only {
       border: 0 !important;
       clip: rect(1px, 1px, 1px, 1px) !important;
@@ -22,7 +21,7 @@ export default function Layout({ children }) {
       width: 1px !important;
       white-space: nowrap !important;
     }
-
+    
     a {
       color: #2e5cb2;
       text-decoration-line: underline;
@@ -30,7 +29,7 @@ export default function Layout({ children }) {
     
     figure {
         position: relative; 
-
+    
         img {
           display: block;
           width: 100%;
@@ -48,18 +47,19 @@ export default function Layout({ children }) {
           box-shadow: inset 0px 0px 10px #eaeaea;
         }
     }
-  `
+`
 
-  const Layout = styled.div`
+const LayoutWrapper = styled.div`
     background: #fafafa;
-  `
+`
 
+export default function Layout({ children }) {
   return (
-    <Layout>
+    <LayoutWrapper>
       <GlobalStyle />
       <Header />
       {children}
       <Footer />
-    </Layout>
+    </LayoutWrapper>
   )
 }

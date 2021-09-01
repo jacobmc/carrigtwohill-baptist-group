@@ -46,7 +46,11 @@ const SearchPanel = styled.div`
   }
   
   .ais-SearchBox {
-	form {
+	.ais-SearchBox-form {
+	  &::before {
+	    background-repeat: no-repeat;	  
+	  }
+	  
 	  input {
 		width: calc(100% - 50px);	  
 		height: 50px;
@@ -84,6 +88,8 @@ export default function Search() {
 		searchPanel = document.getElementById("search-overlay")
 	// }
 
+	// TODO figure out what the above was for
+
 	console.log( searchPanel )
 
 	const openSearchPanel = () => {
@@ -97,6 +103,8 @@ export default function Search() {
 	}
 
 	const Hit = ({hit}) => <a href={hit.url}>{hit.title}</a>
+
+	// TODO Set initial results to be empty and add message for no results
 
 	return (
 		<div>

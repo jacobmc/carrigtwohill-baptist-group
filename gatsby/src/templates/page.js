@@ -13,34 +13,8 @@ import ContactForm from "../components/ContactForm";
  * @returns {JSX.Element}
  * @constructor
  */
-export default function PageTemplate({
-  data: {
-    allSanityPage: {
-      edges: {
-        0: { node: page },
-      },
-    },
-  },
-  pageContext,
-}) {
-  const serializers = {
-    types: {
-      code: props => (
-          <pre data-language={props.node.language}>
-        <code>{props.node.code}</code>
-      </pre>
-      )
-    }
-  }
 
-  // Render the contact form if this is the contact page
-  const renderContactForm = () => {
-    if(pageContext.slug === 'contact') {
-      return <ContactForm />
-    }
-  }
-
-  const Container = styled.article`
+const Container = styled.article`
     max-width: 954px;
     margin: 0 auto;
     padding: 100px 0;
@@ -51,7 +25,7 @@ export default function PageTemplate({
     }
   `
 
-  const Header = styled.header`
+const Header = styled.header`
     h1 {
       position: relative;
       display: inline-block;
@@ -83,6 +57,33 @@ export default function PageTemplate({
       }
     }
   `
+
+export default function PageTemplate({
+  data: {
+    allSanityPage: {
+      edges: {
+        0: { node: page },
+      },
+    },
+  },
+  pageContext,
+}) {
+  const serializers = {
+    types: {
+      code: props => (
+          <pre data-language={props.node.language}>
+        <code>{props.node.code}</code>
+      </pre>
+      )
+    }
+  }
+
+  // Render the contact form if this is the contact page
+  const renderContactForm = () => {
+    if(pageContext.slug === 'contact') {
+      return <ContactForm />
+    }
+  }
 
   return (
     <Layout>

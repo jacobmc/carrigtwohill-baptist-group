@@ -5,8 +5,7 @@ import CallToAction from "../components/CallToAction"
 import Card from "../components/Card"
 import styled from "styled-components"
 
-export default function Home() {
-  const Featured = styled.section`
+const Featured = styled.section`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,6 +31,7 @@ export default function Home() {
     }
   `
 
+export default function Home() {
   return (
     <Layout>
       <Banner />

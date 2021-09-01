@@ -12,6 +12,22 @@ import styled from "styled-components";
  * @returns {JSX.Element}
  * @constructor
  */
+
+const Container = styled.article`
+    max-width: 954px;
+    margin: 0 auto;
+    padding: 50px 0;
+  `
+
+const Header = styled.header`
+     h1 {
+      position: relative;
+      display: inline-block;
+      max-width: 80%;
+      margin-bottom: 0.8rem;
+    }
+  `
+
 export default function PageTemplate({
   data: {
     allSanityNews: {
@@ -31,21 +47,6 @@ export default function PageTemplate({
       )
     }
   }
-
-  const Container = styled.article`
-    max-width: 954px;
-    margin: 0 auto;
-    padding: 50px 0;
-  `
-
-  const Header = styled.header`
-     h1 {
-      position: relative;
-      display: inline-block;
-      max-width: 80%;
-      margin-bottom: 0.8rem;
-    }
-  `
 
   return (
     <Layout>

@@ -12,33 +12,14 @@ import styled from "styled-components";
  * @returns {JSX.Element}
  * @constructor
  */
-export default function PageTemplate({
-  data: {
-    allSanityEvent: {
-      edges: {
-        0: { node: event },
-      },
-    },
-  },
-  pageContext,
-}) {
-  const serializers = {
-    types: {
-      code: props => (
-          <pre data-language={props.node.language}>
-        <code>{props.node.code}</code>
-      </pre>
-      )
-    }
-  }
 
-  const Container = styled.article`
+const Container = styled.article`
     max-width: 954px;
     margin: 0 auto;
     padding: 100px 0;
   `
 
-  const Header = styled.header`
+const Header = styled.header`
     h1 {
       position: relative;
       display: inline-block;
@@ -63,6 +44,26 @@ export default function PageTemplate({
       }
     }
   `
+
+export default function PageTemplate({
+  data: {
+    allSanityEvent: {
+      edges: {
+        0: { node: event },
+      },
+    },
+  },
+  pageContext,
+}) {
+  const serializers = {
+    types: {
+      code: props => (
+          <pre data-language={props.node.language}>
+        <code>{props.node.code}</code>
+      </pre>
+      )
+    }
+  }
 
   return (
     <Layout>

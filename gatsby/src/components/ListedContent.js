@@ -33,6 +33,8 @@ export default function ListedContent({content}) {
 	url += content.slug.current
 	summary = ( summary.split(" ").length > summaryLength ) ? summary.split(" ").splice(0, summaryLength).join(" ") + '...' : summary.split(" ").splice(0, summaryLength).join(" ")
 
+	// TODO fix styled component errors
+
 	const Article = styled.article`
 	  display: flex;
 	  padding: 50px 0;

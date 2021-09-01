@@ -106,6 +106,10 @@ export default function Card(props) {
     line-height: 20px;
   `
 
+  // TODO Set up links
+
+  // TODO fix styled component errors
+
   return (
     <Container>
       <Header>

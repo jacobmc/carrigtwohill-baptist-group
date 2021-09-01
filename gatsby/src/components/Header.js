@@ -346,7 +346,7 @@ export default function Header() {
           <Link to={"/"}>
             <Logo
               loading={"eager"}
-              fadeIn={"false"}
+              fadeIn={false}
               fluid={data.file.childImageSharp.fluid}
               title={"Carrigtwohill Baptist Group"}
               alt={"Carrigtwohill Baptist Group Logo"}

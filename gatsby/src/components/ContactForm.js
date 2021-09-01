@@ -44,8 +44,12 @@ export default function ContactForm() {
 		[email, setEmail] = useState(''),
 		[message, setMessage] = useState('')
 
+	// TODO add validation and error messages
+
 	return (
 		<Form name={"contact"} method={"POST"} netlify netlify-honeypot={"bot-field"}>
+			<input type={"hidden"} name={"form-name"} value={"contact"} />
+
 			<div className={"hidden"}>
 				<label htmlFor={"bot-field"}>
 					<span className={"field-label"}>Don't fill this out if you are human:</span>

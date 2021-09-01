@@ -1,9 +1,12 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components";
 
-export default function ContactForm() {
-	const Form = styled.form`
+const Form = styled.form`
 		max-width: 600px;
+		
+		.hidden {
+			display: none;
+		}
 		
 		.field {
 			display: grid;
@@ -35,27 +38,40 @@ export default function ContactForm() {
 		}
 	`
 
+export default function ContactForm() {
+	const [botField, setBotField] = useState(''),
+		[name, setName] = useState(''),
+		[email, setEmail] = useState(''),
+		[message, setMessage] = useState('')
+
 	return (
-		<Form name={"contact"} method={"POST"} netlify>
+		<Form name={"contact"} method={"POST"} netlify netlify-honeypot={"bot-field"}>
+			<div className={"hidden"}>
+				<label htmlFor={"bot-field"}>
+					<span className={"field-label"}>Don't fill this out if you are human:</span>
+				</label>
+				<input name={"bot-field"} type={"text"} value={botField} onChange={e => setBotField(e.target.value)} />
+			</div>
+
 			<div className={"field"}>
 				<label htmlFor={"name"}>
 					<span className={"field-label"}>Name:</span>
 				</label>
-				<input id={"name"} name={"name"} type={"text"} value={""} />
+				<input id={"name"} name={"name"} type={"text"} value={name} onChange={e => setName(e.target.value)} />
 			</div>
 
 			<div className="field">
 				<label htmlFor={"email"}>
 					<span className={"field-label"}>Email address:</span>
 				</label>
-				<input id={"email"} name={"email"} type={"email"} value={""} />
+				<input id={"email"} name={"email"} type={"email"} value={email} onChange={e => setEmail(e.target.value)} />
 			</div>
 
 			<div className="field">
 				<label htmlFor={"message"}>
 					<span className={"field-label"}>Message:</span>
 				</label>
-				<textarea id={"message"} name={"message"} />
+				<textarea id={"message"} name={"message"} value={message} onChange={e => setMessage(e.target.value)} />
 			</div>
 
 			<div data-netlify-recaptcha={"true"} />

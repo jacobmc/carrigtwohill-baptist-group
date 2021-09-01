@@ -161,6 +161,8 @@ export default function Footer() {
         <div className={"logo"}>
           <Link to={"/"}>
             <Img
+              loading={"eager"}
+              fadeIn={false}
               fixed={data.file.childImageSharp.fixed}
               title={"Carrigtwohill Baptist Group"}
               alt={"Carrigtwohill Baptist Group Logo"}

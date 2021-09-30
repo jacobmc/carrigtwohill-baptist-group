@@ -44,7 +44,20 @@ export default function ContactForm() {
 		[email, setEmail] = useState(''),
 		[message, setMessage] = useState('')
 
-	// TODO add validation and error messages
+	// TODO add validation and error messages, look at AJAXing netlify form submission
+
+	const submitForm = event => {
+		event.preventDefault();
+
+		const name = '',
+			  email = '',
+			  message = '',
+			  honeypot = '',
+			  errorContainer = '',
+			  errors = '';
+
+		console.log(event);
+	}
 
 	return (
 		<Form name={"contact"} method={"POST"} netlify netlify-honeypot={"bot-field"}>

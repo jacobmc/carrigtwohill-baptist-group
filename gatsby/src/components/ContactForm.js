@@ -39,36 +39,28 @@ const Form = styled.form`
 	`
 
 export default function ContactForm() {
-	const [botField, setBotField] = useState(''),
-		[name, setName] = useState(''),
+	const [name, setName] = useState(''),
 		[email, setEmail] = useState(''),
 		[message, setMessage] = useState('')
 
 	// TODO add validation and error messages, look at AJAXing netlify form submission
 
-	const submitForm = event => {
-		event.preventDefault();
-
-		const name = '',
-			  email = '',
-			  message = '',
-			  honeypot = '',
-			  errorContainer = '',
-			  errors = '';
-
-		console.log(event);
-	}
+	// const submitForm = event => {
+	// 	event.preventDefault();
+	//
+	// 	const name = '',
+	// 		  email = '',
+	// 		  message = '',
+	// 		  honeypot = '',
+	// 		  errorContainer = '',
+	// 		  errors = '';
+	//
+	// 	console.log(event);
+	// }
 
 	return (
-		<Form name={"contact"} method={"post"} data-netlify={"true"} netlify-honeypot={"bot-field"}>
-			<input type={"hidden"} name={"form-name"} value={"contact"} />
-
-			<div className={"hidden"}>
-				<label htmlFor={"bot-field"}>
-					<span className={"field-label"}>Don't fill this out if you are human:</span>
-				</label>
-				<input name={"bot-field"} type={"text"} value={botField} onChange={e => setBotField(e.target.value)} />
-			</div>
+		<Form name={"Contact"} method={"post"} data-netlify={"true"} data-netlify-recaptcha={"true"}>
+			<input type={"hidden"} name={"form-name"} value={"Contact"} />
 
 			<div className={"field"}>
 				<label htmlFor={"name"}>

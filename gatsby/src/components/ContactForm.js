@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import styled from "styled-components";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Form = styled.form`
 		max-width: 600px;
@@ -83,7 +84,7 @@ export default function ContactForm() {
 				<textarea id={"message"} name={"message"} value={message} onChange={e => setMessage(e.target.value)} />
 			</div>
 
-			<div data-netlify-recaptcha={"true"} />
+			<ReCAPTCHA sitekey={process.env.RECAPTCHA_SITE_KEY}/>
 
 			<input type={"submit"} value={"Send message"} />
 		</Form>

@@ -84,11 +84,9 @@ export default function Search() {
 
 	console.log( isBrowser )
 
-	// if ( isBrowser ) {
+	if ( isBrowser ) {
 		searchPanel = document.getElementById("search-overlay")
-	// }
-
-	// TODO figure out what the above was for
+	}
 
 	console.log( searchPanel )
 

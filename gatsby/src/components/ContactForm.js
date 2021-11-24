@@ -84,7 +84,7 @@ export default function ContactForm() {
 				<textarea id={"message"} name={"message"} value={message} onChange={e => setMessage(e.target.value)} />
 			</div>
 
-			<ReCAPTCHA sitekey={process.env.RECAPTCHA_SITE_KEY}/>
+			<ReCAPTCHA sitekey={process.env.GATSBY_RECAPTCHA_SITE_KEY}/>
 
 			<input type={"submit"} value={"Send message"} />
 		</Form>

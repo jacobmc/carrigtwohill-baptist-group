@@ -12,12 +12,12 @@ const Messages = styled.div`
 		}
   
   		.error {
-		  background: #AB2346;
+		  background: rgba(171, 35, 70, 0.8);
 		  color: #fff;
 		}
 
-	    .error {
-		  background: #037971;
+	    .success {
+		  background: rgba(3, 121, 113, 0.7);
 		  color: #fff;
 	    }
 	`
@@ -40,6 +40,11 @@ const Form = styled.form`
 					font-size: 1.125rem;
 				}
 			}
+		}
+  
+  		input:not([type=submit]),
+		textarea {
+		  padding: 3px 8px;
 		}
 		
 		input[type=submit] {
@@ -75,7 +80,7 @@ export default function ContactForm() {
 			  messages = []
 
 		if ( recaptchaValue === '' ) {
-			errors.push('Please complete ReCAPTCHA check.');
+			errors.push('Please complete the ReCAPTCHA check.');
 		}
 
 		msgContainer.innerHTML = '';
@@ -99,38 +104,39 @@ export default function ContactForm() {
 			headers: { "Content-Type": "application/x-www-form-urlencoded" },
 			body: new URLSearchParams(formData).toString()
 		}).then(response => {
+			console.log(response)
 			if (!response.ok) {
 				throw new Error(`HTTP error! status: ${response.status}`)
 			} else {
 				messages.push('Form successfully submitted')
 			}
+
+			if ( messages.length ) {
+				messages.forEach( msg => {
+					let msgP = document.createElement('p')
+					msgP.classList.add('success')
+					msgP.appendChild(document.createTextNode(msg))
+					msgContainer.appendChild(msgP)
+				})
+			}
 		}).catch( error => {
 	 		errors.push(error);
+
+			if ( errors.length ) {
+				errors.forEach( error => {
+					let errorP = document.createElement('p')
+					errorP.classList.add('error')
+					errorP.appendChild(document.createTextNode(error))
+					msgContainer.appendChild(errorP)
+				})
+			}
 		})
-
-		if ( errors.length ) {
-			errors.forEach( error => {
-				let errorP = document.createElement('p')
-				errorP.classList.add('error')
-				errorP.appendChild(document.createTextNode(error))
-				msgContainer.appendChild(errorP)
-			})
-		}
-
-		if ( messages.length ) {
-			messages.forEach( msg => {
-				let msgP = document.createElement('p')
-				msgP.classList.add('success')
-				msgP.appendChild(document.createTextNode(msg))
-				msgContainer.appendChild(msgP)
-			})
-		}
 	}
 
 	return (
 		<div>
 			<Messages id={'messages'} />
-			<Form id={'contact-form'} name={"Contact"} method={"post"} data-netlify={"true"} data-netlify-recaptcha={"true"} onSubmit={submitForm}>
+			<Form id={'contact-form'} name={"Contact"} method={"post"} data-netlify={"true"} data-netlify-recaptcha={"true"} action={"/contact"} onSubmit={submitForm}>
 				<input type={"hidden"} name={"form-name"} value={"Contact"} />
 
 				<div className={"field"}>

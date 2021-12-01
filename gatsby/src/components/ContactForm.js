@@ -99,7 +99,7 @@ export default function ContactForm() {
 		// Send Form Data
 		let formData = new FormData(event.target)
 
-		fetch('/', {
+		fetch('/contact', {
 			method: 'POST',
 			headers: { "Content-Type": "application/x-www-form-urlencoded" },
 			body: new URLSearchParams(formData).toString()

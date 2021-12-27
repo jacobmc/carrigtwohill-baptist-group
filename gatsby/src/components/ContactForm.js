@@ -104,7 +104,8 @@ export default function ContactForm() {
 		fetch(window.location.pathname + '/', {
 			method: "POST",
 			headers: { "Content-Type": "application/x-www-form-urlencoded" },
-			body: new URLSearchParams(formData).toString()
+			body: new URLSearchParams(formData).toString(),
+			redirect: "error"
 		}).then(response => {
 			console.log(response)
 			if (!response.ok) {

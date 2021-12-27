@@ -79,7 +79,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // Create Pages
   const pages = result.data.allSanityPage.edges || []
   pages.forEach((edge, index) => {
-    const path = `${edge.node.slug.current}`
+    const path = `${edge.node.slug.current}/`
 
     createPage({
       path,
@@ -91,7 +91,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // Create Articles
   const articles = result.data.allSanityArticle.edges || []
   articles.forEach((edge, index) => {
-    const path = `articles/${edge.node.slug.current}`
+    const path = `articles/${edge.node.slug.current}/`
 
     createPage({
       path,
@@ -103,7 +103,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // Create Events
   const events = result.data.allSanityEvent.edges || []
   events.forEach((edge, index) => {
-    const path = `events/${edge.node.slug.current}`
+    const path = `events/${edge.node.slug.current}/`
 
     createPage({
       path,
@@ -115,7 +115,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // Create News
   const news = result.data.allSanityNews.edges || []
   news.forEach((edge, index) => {
-    const path = `news/${edge.node.slug.current}`
+    const path = `news/${edge.node.slug.current}/`
 
     createPage({
       path,
@@ -127,7 +127,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // Create Videos
   const videos = result.data.allSanityVideo.edges || []
   videos.forEach((edge, index) => {
-    const path = `videos/${edge.node.slug.current}`
+    const path = `videos/${edge.node.slug.current}/`
 
     createPage({
       path,

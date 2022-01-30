@@ -14,10 +14,10 @@ export default function Navigation({menu, currentPage, className} ) {
 	// Renders link using anchor tag if menu item goes to external source
 	const renderLink = menuItem => {
 		if(menuItem.menuItemUrl.externalContent) {
-			return <a href={"/" + menuItem.menuItemUrl.linkUrl}>{menuItem.text}</a>
+			return <a href={"/" + menuItem.menuItemUrl.linkUrl + "/"}>{menuItem.text}</a>
 		}
 
-		return <Link to={"/" + menuItem.menuItemUrl.linkUrl}>{menuItem.text}</Link>
+		return <Link to={"/" + menuItem.menuItemUrl.linkUrl + "/"}>{menuItem.text}</Link>
 	}
 
 	// Renders the submenu if it exists for menu item

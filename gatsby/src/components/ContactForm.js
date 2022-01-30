@@ -138,7 +138,7 @@ export default function ContactForm() {
 	return (
 		<div>
 			<Messages id={'messages'} />
-			<Form id={'contact-form'} name={"Contact"} method={"post"} netlify data-netlify-recaptcha={"true"} action={"/contact"} onSubmit={submitForm}>
+			<Form id={'contact-form'} name={"Contact"} netlify data-netlify-recaptcha={"true"} onSubmit={submitForm}>
 				<input type={"hidden"} name={"form-name"} value={"Contact"} />
 
 				<div className={"field"}>

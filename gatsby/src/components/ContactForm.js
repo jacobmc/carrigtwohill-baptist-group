@@ -100,8 +100,8 @@ export default function ContactForm() {
 		let formData = new FormData(event.target)
 
 		// TODO fetch request is redirecting on production which is preventing the submission being sent to netlify
-
-		fetch(window.location.href + '/', {
+		//window.location.href + '/'
+		fetch( '/submit.html/', {
 			method: "POST",
 			headers: { "Content-Type": "application/x-www-form-urlencoded" },
 			body: new URLSearchParams(formData).toString()

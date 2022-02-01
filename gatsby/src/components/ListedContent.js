@@ -2,40 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 
-export default function ListedContent({content}) {
-	// Build type specific elements
-	let url = '/',
-		buttonText = 'Read More',
-		summary = '',
-		summaryLength = 25
-	switch (content.contentType) {
-		case 'news':
-			url = '/news/'
-			summary = content.body[0].children[0].text
-			break
-		case 'article':
-			url = '/articles/'
-			summary = content.body[0].children[0].text
-			break
-		case 'video':
-			url = '/videos/'
-			buttonText = 'Watch Now'
-			summary = content.description[0].children[0].text
-			break
-		case 'event':
-			url = '/events/'
-			buttonText = 'Learn More'
-			summary = content.description[0].children[0].text
-			break
-		default:
-			url = '/'
-	}
-	url += content.slug.current
-	summary = ( summary.split(" ").length > summaryLength ) ? summary.split(" ").splice(0, summaryLength).join(" ") + '...' : summary.split(" ").splice(0, summaryLength).join(" ")
-
-	// TODO fix styled component errors
-
-	const Article = styled.article`
+const Article = styled.article`
 	  display: flex;
 	  padding: 50px 0;
 	  align-items: center;
@@ -83,6 +50,37 @@ export default function ListedContent({content}) {
 	    }
 	  }
 	`
+
+export default function ListedContent({content}) {
+	// Build type specific elements
+	let url = '/',
+		buttonText = 'Read More',
+		summary = '',
+		summaryLength = 25
+	switch (content.contentType) {
+		case 'news':
+			url = '/news/'
+			summary = content.body[0].children[0].text
+			break
+		case 'article':
+			url = '/articles/'
+			summary = content.body[0].children[0].text
+			break
+		case 'video':
+			url = '/videos/'
+			buttonText = 'Watch Now'
+			summary = content.description[0].children[0].text
+			break
+		case 'event':
+			url = '/events/'
+			buttonText = 'Learn More'
+			summary = content.description[0].children[0].text
+			break
+		default:
+			url = '/'
+	}
+	url += content.slug.current
+	summary = ( summary.split(" ").length > summaryLength ) ? summary.split(" ").splice(0, summaryLength).join(" ") + '...' : summary.split(" ").splice(0, summaryLength).join(" ")
 
 	console.log( summary );
 	console.log(content);

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import algoliasearch from "algoliasearch/lite"
 import { InstantSearch, SearchBox, Hits } from "react-instantsearch-dom"
 import { FaSearch } from "react-icons/fa"
@@ -82,14 +82,6 @@ export default function Search() {
 
 	let searchPanel = ''
 
-	console.log( isBrowser )
-
-	if ( isBrowser ) {
-		searchPanel = document.getElementById("search-overlay")
-	}
-
-	console.log( searchPanel )
-
 	const openSearchPanel = () => {
 		if ( searchPanel !== '' && searchPanel !== null ) {
 			searchPanel.classList.add('open')
@@ -101,6 +93,12 @@ export default function Search() {
 	}
 
 	const Hit = ({hit}) => <a href={hit.url}>{hit.title}</a>
+
+	useEffect(() => {
+		if ( isBrowser ) {
+			searchPanel = document.getElementById("search-overlay")
+		}
+	})
 
 	// TODO Set initial results to be empty and add message for no results
 

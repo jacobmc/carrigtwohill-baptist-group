@@ -61,6 +61,7 @@ const Form = styled.form`
 			font-size: 1.125rem;
 			border-radius: 8px;
 			border: none;
+			cursor: pointer;
 		}
 	`
 

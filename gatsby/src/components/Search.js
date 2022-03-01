@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import algoliasearch from "algoliasearch/lite"
-import { InstantSearch, SearchBox, Hits } from "react-instantsearch-dom"
+import { InstantSearch, SearchBox, Hits, connectStateResults } from "react-instantsearch-dom"
 import { FaSearch } from "react-icons/fa"
 import styled from "styled-components"
 
@@ -34,6 +34,7 @@ const SearchPanel = styled.div`
 	border-radius: 15px;
 	overflow: hidden;
 	padding: 50px 25px;
+	transition: height 0.3s ease-in-out;
 	
 	.close {
 	  position: absolute;
@@ -94,13 +95,25 @@ export default function Search() {
 
 	const Hit = ({hit}) => <a href={hit.url}>{hit.title}</a>
 
+	const Results = connectStateResults(
+		({ searchState, searchResults, children }) =>
+			searchState && searchState.query ? (
+				searchResults && searchResults.nbHits !== 0 ? (
+					children
+				) : (
+					<div>No results have been found for {searchState.query}.</div>
+				)
+			) : (
+				<div>Search for a topic or a keyword to get started.</div>
+			)
+
+	)
+
 	useEffect(() => {
 		if ( isBrowser ) {
 			searchPanel = document.getElementById("search-overlay")
 		}
 	})
-
-	// TODO Set initial results to be empty and add message for no results
 
 	return (
 		<div>
@@ -115,7 +128,9 @@ export default function Search() {
 					</button>
 					<InstantSearch searchClient={searchClient} indexName={"netlify_ae06d06d-e53b-4e86-a343-0285a6856e91_main_all"}>
 						<SearchBox />
-						<Hits hitComponent={Hit} />
+						<Results>
+							<Hits hitComponent={Hit} />
+						</Results>
 					</InstantSearch>
 				</div>
 			</SearchPanel>

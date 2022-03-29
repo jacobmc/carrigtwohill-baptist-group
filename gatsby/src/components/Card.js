@@ -65,29 +65,38 @@ const Links = styled.div`
 
 export default function Card(props) {
   const { type, title, description } = props
-  let iconBackground = null
-  let headingText = null
+  let iconBackground = null,
+      headingText = null,
+      archivePath = null,
+      itemPath = null
 
   switch (type) {
     case "news":
       iconBackground = "#FFB20F"
       headingText = "Latest News"
+      archivePath = "/news"
+      itemPath = "/news/sample-news-item"
       break
     case "article":
       iconBackground = "#037971"
       headingText = "New Article"
+      archivePath = "/resources"
+      itemPath = "/articles/sample-article-1"
       break
     case "video":
       iconBackground = "#AB2346"
       headingText = "New Video"
+      archivePath = "/resources"
       break
     case "event":
       iconBackground = "#2E5CB2"
       headingText = "Upcoming Event"
+      archivePath = "/events"
       break
     default:
       iconBackground = "#FFB20F"
       headingText = "New Resource"
+      archivePath = "/resources"
       break
   }
 
@@ -120,7 +129,7 @@ export default function Card(props) {
       </section>
       <footer>
         <Links>
-          <Link to={"#"}>Read More</Link> | <Link to={"#"}>View All</Link>
+          <Link to={itemPath}>Read More</Link> | <Link to={archivePath}>View All</Link>
         </Links>
       </footer>
     </Container>

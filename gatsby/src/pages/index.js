@@ -31,6 +31,10 @@ const Featured = styled.section`
     }
   `
 
+// TODO add source for banner: heading, text, and image
+// TODO add source for CTA: heading, text, and link
+// TODO add source for card data: item path, title, description, type
+
 export default function Home() {
   return (
     <Layout>

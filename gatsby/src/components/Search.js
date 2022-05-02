@@ -49,7 +49,7 @@ const SearchPanel = styled.div`
   .ais-SearchBox {
 	.ais-SearchBox-form {
 	  &::before {
-	    background-repeat: no-repeat;	  
+		display: none;
 	  }
 	  
 	  input {
@@ -59,6 +59,25 @@ const SearchPanel = styled.div`
 	  button {
 		width: 50px;
 		height: 50px;
+	  }
+	  .ais-SearchBox-input {
+		padding-left: 1rem;
+		border-radius: 3px 0 0 3px;
+	  }
+	  .ais-SearchBox-reset {
+		right: 3rem;
+	  }
+	  .ais-SearchBox-submit {
+		display: block;
+		background: #ab2346;
+		border-radius: 0 3px 3px 0;
+		
+		svg {
+		  stroke: #fff;
+		  fill: #fff;
+		  width: 20px;
+		  height: 20px;
+		}
 	  }
 	}
   }
@@ -127,7 +146,9 @@ export default function Search() {
 						<span aria-hidden="true">Close <span style={{fontSize: 25 + 'px'}}>&times;</span></span>
 					</button>
 					<InstantSearch searchClient={searchClient} indexName={"netlify_ae06d06d-e53b-4e86-a343-0285a6856e91_main_all"}>
-						<SearchBox />
+						<SearchBox
+							searchAsYouType={false}
+						/>
 						<Results>
 							<Hits hitComponent={Hit} />
 						</Results>
